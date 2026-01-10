@@ -1,0 +1,11 @@
+local info = string.format(
+    "UniverseId: %s\nPlaceId: %s",
+    game.GameId,
+    game.PlaceId
+)
+
+print(info)
+
+pcall(function()
+    setclipboard(tostring(game.GameId))
+end)
