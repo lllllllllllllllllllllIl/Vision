@@ -4,7 +4,12 @@ local GameId = game.GameId
 
 local GameScripts = {
     [5661134200] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/Tnf/refs/heads/main/free%20gui",        -- Track N Field
-    [987654321]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",
+    [3150475059]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",       -- Football Fusion 2
+    [1] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/Tnf/refs/heads/main/free%20gui",        -- 
+    [2]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",
+    [3] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/Tnf/refs/heads/main/free%20gui",        -- 
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",
+
 }
 
 local function Load(url)
