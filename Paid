@@ -1,37 +1,29 @@
--- Define a table to map Place IDs to their respective script URLs
-local scripts = {
-    [6678600773] = "https://raw.githubusercontent.com/kosta5630/RH2/refs/heads/main/Gui", -- 
-    [7235817949] = "https://raw.githubusercontent.com/kosta5630/RH2/refs/heads/main/Gui",       -- 
-    [8026790371] = "https://raw.githubusercontent.com/kosta5630/RH2/refs/heads/main/Gui", -- 
-    [14269621394] = "https://raw.githubusercontent.com/kosta5630/RH2/refs/heads/main/Gui",  -- 
-    [16347334090] = "https://raw.githubusercontent.com/kosta5630/Hoop-Nation/refs/heads/main/Gui", -- 
-    [16110530195] = "https://raw.githubusercontent.com/kosta5630/Hoop-Nation/refs/heads/main/Gui",       -- 
-    [16128274392] = "https://raw.githubusercontent.com/kosta5630/Hoop-Nation/refs/heads/main/Gui", --  
-    [6229116934] = "https://raw.githubusercontent.com/kosta5630/Hoopz/refs/heads/main/GUI",       -- 
-    [13272886093] = "https://raw.githubusercontent.com/kosta5630/RH2/refs/heads/main/Gui",       -- 
-    [12355337193] = "https://raw.githubusercontent.com/kosta5630/Mvs/refs/heads/main/Free%20Gui", -- 
-    [14259168147] = "https://raw.githubusercontent.com/kosta5630/Basketball-Legends/refs/heads/main/Free%20GUi", -- 
-    [14386691987] = "https://raw.githubusercontent.com/kosta5630/Basketball-Legends/refs/heads/main/Free%20GUi", -- 
-    [17652855195] = "https://raw.githubusercontent.com/kosta5630/Basketball-Legends/refs/heads/main/Free%20GUi", -- 
-    [6585022145] = "https://raw.githubusercontent.com/kosta5630/RH2/refs/heads/main/Gui", -- 
-    [17483792958] = "https://raw.githubusercontent.com/kosta5630/Hoops-Life/refs/heads/main/Free%20gui", -- 
-    [18894472013] = "https://raw.githubusercontent.com/kosta5630/Hoops-Life/refs/heads/main/Free%20gui", -- 
-    [16996050230] = "https://raw.githubusercontent.com/kosta5630/Hoops-Life/refs/heads/main/Free%20gui", -- 
-    [15800296330] = "https://raw.githubusercontent.com/kosta5630/Rbw5-public/refs/heads/main/Gui", -- 
-    [85959597177250] = "https://raw.githubusercontent.com/kosta5630/Rbw5-public/refs/heads/main/Gui", -- 
-    [5462326700] = "https://raw.githubusercontent.com/kosta5630/Rbw5-public/refs/heads/main/Gui", -- 
-    [134558434771720] = "https://raw.githubusercontent.com/kosta5630/Arcade-basketball-public/refs/heads/main/Gui", -- 
-    -- Add more Place IDs and script URLs here
+-- UNIVERSAL UNIVERSE LOADER
+
+local GameId = game.GameId
+
+local GameScripts = {
+    [5661134200] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/Tnf/refs/heads/main/paid%20gui",        -- Track N Field
+    [3150475059]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/67/refs/heads/main/paid%20gui",       -- Football Fusion 2
+    [1] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/Tnf/refs/heads/main/free%20gui",        -- 
+    [2]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",
+    [3] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/Tnf/refs/heads/main/free%20gui",        -- 
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",
+
 }
 
--- Get the current game's Place ID
-local placeId = game.PlaceId
+local function Load(url)
+    local success, err = pcall(function()
+        loadstring(game:HttpGet(url, true))()
+    end)
 
--- Check if there's a script for the current Place ID
-if scripts[placeId] then
-    -- Load and execute the script for the current Place ID
-    loadstring(game:HttpGet(scripts[placeId]))()
+    if not success then
+        warn("[LOADER ERROR]:", err)
+    end
+end
+
+if GameScripts[GameId] then
+    Load(GameScripts[GameId])
 else
-    -- If no script is defined for this game
-    print("No script available for this game!")
+    warn("No script mapped for UniverseId:", GameId)
 end
