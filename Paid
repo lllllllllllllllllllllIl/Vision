@@ -8,7 +8,15 @@ local GameScripts = {
     [6505338302] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/12/refs/heads/main/Paid",        --       Football Legends 
     [184199275]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/8/refs/heads/main/paid",        -- NFL Universe Football 
     [6260656796] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/1/refs/heads/main/paid",        -- Playground Basketball
-    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",
+    [4931927012]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/2/refs/heads/main/paid", -- Basketball Legends
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
 
 }
 
