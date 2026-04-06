@@ -1,1 +1,119 @@
+local validKeys = {
+    ["FREE_a3f91c4b8e2d47f0b19c6e5a72d4f8c1"] = true,
+    ["FREE_f7b24d9e13ac4f0e8c52b1a6d3e9470f"] = true,
+    ["FREE_4c9e81b2f0da47c3a6f5d1e28b7c93fa"] = true,
+    ["FREE_91e4b7c2d3a84f1f5b0c2e9a7d4f36b8"] = true,
+    ["FREE_d8c1f4e7b29a4c0fb3e6a1d5c7f92e04"] = true,
+    ["FREE_0fa4c1e9b7d24e3c8f5a6b1d93e27c40"] = true,
+    ["FREE_b7e3c9a1f4d84e0c2a5f9d6b13e720cf"] = true,
+    ["FREE_3d1f8b4e92a74c0fb6e5c3a1d7f09e52"] = true,
+    ["FREE_e4b1c7d9f0a24e3b8c5d6a1f72e93b05"] = true,
+    ["FREE_5c8e1a3f7d9b42e0a6f3c1b4e9d27f60"] = true,
+}
 
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.CoreGui
+
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(0, 320, 0, 360)
+frame.Position = UDim2.new(0.5, -160, 0.5, -180)
+frame.BackgroundColor3 = Color3.fromRGB(20,20,25)
+frame.BorderSizePixel = 0
+
+local corner = Instance.new("UICorner", frame)
+corner.CornerRadius = UDim.new(0,12)
+
+local title = Instance.new("TextLabel")
+title.Parent = frame
+title.Size = UDim2.new(1,0,0,50)
+title.BackgroundTransparency = 1
+title.Text = "Welcome Back!"
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 24
+
+local box = Instance.new("TextBox")
+box.Parent = frame
+box.Size = UDim2.new(0.85,0,0,45)
+box.Position = UDim2.new(0.075,0,0.22,0)
+box.PlaceholderText = "Enter key"
+box.Text = ""
+box.BackgroundColor3 = Color3.fromRGB(35,35,45)
+box.TextColor3 = Color3.fromRGB(255,255,255)
+box.Font = Enum.Font.Gotham
+box.TextSize = 16
+
+Instance.new("UICorner", box).CornerRadius = UDim.new(0,8)
+
+local continueBtn = Instance.new("TextButton")
+continueBtn.Parent = frame
+continueBtn.Size = UDim2.new(0.85,0,0,45)
+continueBtn.Position = UDim2.new(0.075,0,0.38,0)
+continueBtn.Text = "Continue"
+continueBtn.BackgroundColor3 = Color3.fromRGB(40,90,255)
+continueBtn.TextColor3 = Color3.fromRGB(255,255,255)
+continueBtn.Font = Enum.Font.GothamBold
+continueBtn.TextSize = 18
+
+Instance.new("UICorner", continueBtn).CornerRadius = UDim.new(0,8)
+
+local receiveBtn = Instance.new("TextButton")
+receiveBtn.Parent = frame
+receiveBtn.Size = UDim2.new(0.85,0,0,45)
+receiveBtn.Position = UDim2.new(0.075,0,0.54,0)
+receiveBtn.Text = "Receive Key"
+receiveBtn.BackgroundColor3 = Color3.fromRGB(35,35,45)
+receiveBtn.TextColor3 = Color3.fromRGB(255,255,255)
+receiveBtn.Font = Enum.Font.Gotham
+receiveBtn.TextSize = 18
+
+Instance.new("UICorner", receiveBtn).CornerRadius = UDim.new(0,8)
+
+local tutorialBtn = Instance.new("TextButton")
+tutorialBtn.Parent = frame
+tutorialBtn.Size = UDim2.new(0.85,0,0,45)
+tutorialBtn.Position = UDim2.new(0.075,0,0.70,0)
+tutorialBtn.Text = "Tutorial"
+tutorialBtn.BackgroundColor3 = Color3.fromRGB(35,35,45)
+tutorialBtn.TextColor3 = Color3.fromRGB(255,255,255)
+tutorialBtn.Font = Enum.Font.Gotham
+tutorialBtn.TextSize = 18
+
+Instance.new("UICorner", tutorialBtn).CornerRadius = UDim.new(0,8)
+
+local status = Instance.new("TextLabel")
+status.Parent = frame
+status.Size = UDim2.new(1,0,0,30)
+status.Position = UDim2.new(0,0,0.86,0)
+status.BackgroundTransparency = 1
+status.Text = ""
+status.TextColor3 = Color3.fromRGB(255,80,80)
+status.Font = Enum.Font.Gotham
+status.TextSize = 16
+
+continueBtn.MouseButton1Click:Connect(function()
+    if validKeys[box.Text] then
+        status.TextColor3 = Color3.fromRGB(80,255,120)
+        status.Text = "Key accepted!"
+        wait(1)
+        gui:Destroy()
+    else
+        status.TextColor3 = Color3.fromRGB(255,80,80)
+        status.Text = "Key is invalid."
+    end
+end)
+
+receiveBtn.MouseButton1Click:Connect(function()
+    if setclipboard then
+        setclipboard("https://discord.gg/JxjKqZEnSa")
+    end
+    receiveBtn.Text = "Link Copied"
+end)
+
+tutorialBtn.MouseButton1Click:Connect(function()
+    if setclipboard then
+        setclipboard("https://tut.com/")
+    end
+    tutorialBtn.Text = "Link Copied"
+end)
