@@ -12,27 +12,27 @@ gui.Parent = game.CoreGui
 
 local shadow = Instance.new("Frame")
 shadow.Parent = gui
-shadow.Size = UDim2.new(0,350,0,470)
-shadow.Position = UDim2.new(1,-385,0.5,-235)
+shadow.Size = UDim2.new(0,300,0,400)
+shadow.Position = UDim2.new(1,-335,0.5,-200)
 shadow.BackgroundColor3 = Color3.fromRGB(0,0,0)
 shadow.BackgroundTransparency = 1
 shadow.BorderSizePixel = 0
-Instance.new("UICorner", shadow).CornerRadius = UDim.new(0,14)
+Instance.new("UICorner", shadow).CornerRadius = UDim.new(0,12)
 
 local frame = Instance.new("Frame")
 frame.Parent = gui
-frame.Size = UDim2.new(0,330,0,450)
-frame.Position = UDim2.new(1,-375,0.5,-225)
+frame.Size = UDim2.new(0,285,0,385)
+frame.Position = UDim2.new(1,-325,0.5,-192)
 frame.BackgroundColor3 = Color3.fromRGB(15,20,28)
 frame.BackgroundTransparency = 1
 frame.BorderSizePixel = 0
-Instance.new("UICorner", frame).CornerRadius = UDim.new(0,12)
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0,10)
 
-TweenService:Create(frame,TweenInfo.new(.4),{
+TweenService:Create(frame,TweenInfo.new(.35),{
 	BackgroundTransparency = 0
 }):Play()
 
-TweenService:Create(shadow,TweenInfo.new(.4),{
+TweenService:Create(shadow,TweenInfo.new(.35),{
 	BackgroundTransparency = 0.45
 }):Play()
 
@@ -44,11 +44,6 @@ frame.InputBegan:Connect(function(input)
 		drag = true
 		dragStart = input.Position
 		startPos = frame.Position
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				drag = false
-			end
-		end)
 	end
 end)
 
@@ -62,29 +57,35 @@ UserInputService.InputChanged:Connect(function(input)
 	if input == dragInput and drag then
 		local delta = input.Position - dragStart
 		frame.Position = UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)
-		shadow.Position = UDim2.new(frame.Position.X.Scale,frame.Position.X.Offset-10,frame.Position.Y.Scale,frame.Position.Y.Offset-10)
+		shadow.Position = UDim2.new(frame.Position.X.Scale,frame.Position.X.Offset-8,frame.Position.Y.Scale,frame.Position.Y.Offset-8)
+	end
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 then
+		drag = false
 	end
 end)
 
 local title = Instance.new("TextLabel")
 title.Parent = frame
-title.Position = UDim2.new(0,25,0,18)
-title.Size = UDim2.new(1,-60,0,35)
+title.Position = UDim2.new(0,20,0,14)
+title.Size = UDim2.new(1,-50,0,30)
 title.BackgroundTransparency = 1
 title.Text = "Welcome Back!"
 title.Font = Enum.Font.GothamBold
-title.TextSize = 26
+title.TextSize = 22
 title.TextColor3 = Color3.fromRGB(255,255,255)
 title.TextXAlignment = Enum.TextXAlignment.Left
 
 local close = Instance.new("TextButton")
 close.Parent = frame
-close.Position = UDim2.new(1,-42,0,14)
-close.Size = UDim2.new(0,24,0,24)
+close.Position = UDim2.new(1,-35,0,12)
+close.Size = UDim2.new(0,20,0,20)
 close.Text = "✕"
 close.BackgroundTransparency = 1
 close.Font = Enum.Font.GothamBold
-close.TextSize = 20
+close.TextSize = 16
 close.TextColor3 = Color3.fromRGB(140,150,170)
 
 close.MouseButton1Click:Connect(function()
@@ -93,53 +94,53 @@ end)
 
 local desc = Instance.new("TextLabel")
 desc.Parent = frame
-desc.Position = UDim2.new(0,25,0,52)
-desc.Size = UDim2.new(1,-50,0,42)
+desc.Position = UDim2.new(0,20,0,42)
+desc.Size = UDim2.new(1,-40,0,35)
 desc.BackgroundTransparency = 1
-desc.Text = "Access Delta by completing the\nkey system, doesn't take long!"
+desc.Text = "Access Delta by completing the\nkey system."
 desc.Font = Enum.Font.Gotham
-desc.TextSize = 14
+desc.TextSize = 12
 desc.TextColor3 = Color3.fromRGB(120,130,145)
 desc.TextWrapped = true
 desc.TextXAlignment = Enum.TextXAlignment.Left
 
 local label = Instance.new("TextLabel")
 label.Parent = frame
-label.Position = UDim2.new(0,25,0,110)
-label.Size = UDim2.new(1,-50,0,18)
+label.Position = UDim2.new(0,20,0,88)
+label.Size = UDim2.new(1,-40,0,18)
 label.BackgroundTransparency = 1
 label.Text = "Enter key"
 label.Font = Enum.Font.GothamBold
-label.TextSize = 17
+label.TextSize = 14
 label.TextColor3 = Color3.fromRGB(180,190,210)
 label.TextXAlignment = Enum.TextXAlignment.Left
 
 local input = Instance.new("TextBox")
 input.Parent = frame
-input.Position = UDim2.new(0,25,0,138)
-input.Size = UDim2.new(1,-50,0,46)
+input.Position = UDim2.new(0,20,0,112)
+input.Size = UDim2.new(1,-40,0,40)
 input.BackgroundColor3 = Color3.fromRGB(22,28,40)
 input.PlaceholderText = "KEY_example"
 input.PlaceholderColor3 = Color3.fromRGB(100,110,130)
 input.TextColor3 = Color3.fromRGB(255,255,255)
 input.Font = Enum.Font.Gotham
-input.TextSize = 17
+input.TextSize = 14
 input.BorderSizePixel = 0
-Instance.new("UICorner", input).CornerRadius = UDim.new(0,10)
+Instance.new("UICorner", input).CornerRadius = UDim.new(0,8)
 
 local function makeButton(text,y,outline)
 	local btn = Instance.new("TextButton")
 	btn.Parent = frame
-	btn.Position = UDim2.new(0,25,0,y)
-	btn.Size = UDim2.new(1,-50,0,48)
+	btn.Position = UDim2.new(0,20,0,y)
+	btn.Size = UDim2.new(1,-40,0,40)
 	btn.BackgroundColor3 = Color3.fromRGB(20,26,38)
 	btn.Text = text
 	btn.Font = Enum.Font.GothamBold
-	btn.TextSize = 18
+	btn.TextSize = 15
 	btn.TextColor3 = Color3.fromRGB(190,220,255)
 	btn.BorderSizePixel = outline and 2 or 0
 	btn.BorderColor3 = Color3.fromRGB(55,145,255)
-	Instance.new("UICorner", btn).CornerRadius = UDim.new(0,10)
+	Instance.new("UICorner", btn).CornerRadius = UDim.new(0,8)
 
 	btn.MouseEnter:Connect(function()
 		TweenService:Create(btn,TweenInfo.new(.2),{
@@ -156,17 +157,17 @@ local function makeButton(text,y,outline)
 	return btn
 end
 
-local continueBtn = makeButton("Continue",200,true)
-local receiveBtn = makeButton("Receive Key",260,false)
+local continueBtn = makeButton("Continue",165,true)
+local receiveBtn = makeButton("Receive Key",215,false)
 
 local invalid = Instance.new("Frame")
 invalid.Parent = frame
-invalid.Position = UDim2.new(0,25,0,325)
-invalid.Size = UDim2.new(1,-50,0,65)
+invalid.Position = UDim2.new(0,20,0,268)
+invalid.Size = UDim2.new(1,-40,0,55)
 invalid.BackgroundColor3 = Color3.fromRGB(15,20,28)
 invalid.BorderSizePixel = 1
 invalid.BorderColor3 = Color3.fromRGB(90,100,120)
-Instance.new("UICorner", invalid).CornerRadius = UDim.new(0,10)
+Instance.new("UICorner", invalid).CornerRadius = UDim.new(0,8)
 
 local invalidText = Instance.new("TextLabel")
 invalidText.Parent = invalid
@@ -174,10 +175,10 @@ invalidText.Size = UDim2.new(1,0,1,0)
 invalidText.BackgroundTransparency = 1
 invalidText.Text = "Key is invalid."
 invalidText.Font = Enum.Font.Gotham
-invalidText.TextSize = 17
+invalidText.TextSize = 14
 invalidText.TextColor3 = Color3.fromRGB(110,120,140)
 
-local tutorialBtn = makeButton("Tutorial",400,false)
+local tutorialBtn = makeButton("Tutorial",335,false)
 
 continueBtn.MouseButton1Click:Connect(function()
 	if validKeys[input.Text] then
