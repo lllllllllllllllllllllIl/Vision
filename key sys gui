@@ -5,6 +5,15 @@ local validKeys = {
     ["FREE_a3f91c4b8e2d47f0b19c6e5a72d4f8c1"] = true,
     ["FREE_f7b24d9e13ac4f0e8c52b1a6d3e9470f"] = true,
     ["FREE_4c9e81b2f0da47c3a6f5d1e28b7c93fa"] = true,
+    ["FREE_91e4b7c2d3a84f1f5b0c2e9a7d4f36b8"] = true,
+    ["FREE_d8c1f4e7b29a4c0fb3e6a1d5c7f92e04"] = true,
+    ["FREE_0fa4c1e9b7d24e3c8f5a6b1d93e27c40"] = true,
+    ["FREE_b7e3c9a1f4d84e0c2a5f9d6b13e720cf"] = true,
+    ["FREE_3d1f8b4e92a74c0fb6e5c3a1d7f09e52"] = true,
+    ["FREE_e4b1c7d9f0a24e3b8c5d6a1f72e93b05"] = true,
+    ["FREE_5c8e1a3f7d9b42e0a6f3c1b4e9d27f60"] = true,
+    ["FREE_ae94c1d7f3b82e0c5a6d1f9b47e20c38"] = true,
+    ["FREE_6b1e9c4f3a7d82e0f5c2a1d9e4b07f53"] = true,
 }
 
 local gui = Instance.new("ScreenGui")
