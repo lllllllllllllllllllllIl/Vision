@@ -29,42 +29,42 @@ frame.BorderSizePixel = 0
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0,10)
 
 TweenService:Create(frame,TweenInfo.new(.35),{
-	BackgroundTransparency = 0
+    BackgroundTransparency = 0
 }):Play()
 
 TweenService:Create(shadow,TweenInfo.new(.35),{
-	BackgroundTransparency = 0.45
+    BackgroundTransparency = 0.45
 }):Play()
 
 local drag = false
 local dragInput, dragStart, startPos
 
 frame.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		drag = true
-		dragStart = input.Position
-		startPos = frame.Position
-	end
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        drag = true
+        dragStart = input.Position
+        startPos = frame.Position
+    end
 end)
 
 frame.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement then
-		dragInput = input
-	end
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        dragInput = input
+    end
 end)
 
 UserInputService.InputChanged:Connect(function(input)
-	if input == dragInput and drag then
-		local delta = input.Position - dragStart
-		frame.Position = UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)
-		shadow.Position = UDim2.new(frame.Position.X.Scale,frame.Position.X.Offset-8,frame.Position.Y.Scale,frame.Position.Y.Offset-8)
-	end
+    if input == dragInput and drag then
+        local delta = input.Position - dragStart
+        frame.Position = UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)
+        shadow.Position = UDim2.new(frame.Position.X.Scale,frame.Position.X.Offset-8,frame.Position.Y.Scale,frame.Position.Y.Offset-8)
+    end
 end)
 
 UserInputService.InputEnded:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		drag = false
-	end
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        drag = false
+    end
 end)
 
 local title = Instance.new("TextLabel")
@@ -89,7 +89,7 @@ close.TextSize = 16
 close.TextColor3 = Color3.fromRGB(140,150,170)
 
 close.MouseButton1Click:Connect(function()
-	gui:Destroy()
+    gui:Destroy()
 end)
 
 local desc = Instance.new("TextLabel")
@@ -129,32 +129,32 @@ input.BorderSizePixel = 0
 Instance.new("UICorner", input).CornerRadius = UDim.new(0,8)
 
 local function makeButton(text,y,outline)
-	local btn = Instance.new("TextButton")
-	btn.Parent = frame
-	btn.Position = UDim2.new(0,20,0,y)
-	btn.Size = UDim2.new(1,-40,0,40)
-	btn.BackgroundColor3 = Color3.fromRGB(20,26,38)
-	btn.Text = text
-	btn.Font = Enum.Font.GothamBold
-	btn.TextSize = 15
-	btn.TextColor3 = Color3.fromRGB(190,220,255)
-	btn.BorderSizePixel = outline and 2 or 0
-	btn.BorderColor3 = Color3.fromRGB(55,145,255)
-	Instance.new("UICorner", btn).CornerRadius = UDim.new(0,8)
+    local btn = Instance.new("TextButton")
+    btn.Parent = frame
+    btn.Position = UDim2.new(0,20,0,y)
+    btn.Size = UDim2.new(1,-40,0,40)
+    btn.BackgroundColor3 = Color3.fromRGB(20,26,38)
+    btn.Text = text
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 15
+    btn.TextColor3 = Color3.fromRGB(190,220,255)
+    btn.BorderSizePixel = outline and 2 or 0
+    btn.BorderColor3 = Color3.fromRGB(55,145,255)
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0,8)
 
-	btn.MouseEnter:Connect(function()
-		TweenService:Create(btn,TweenInfo.new(.2),{
-			BackgroundColor3 = Color3.fromRGB(28,35,50)
-		}):Play()
-	end)
+    btn.MouseEnter:Connect(function()
+        TweenService:Create(btn,TweenInfo.new(.2),{
+            BackgroundColor3 = Color3.fromRGB(28,35,50)
+        }):Play()
+    end)
 
-	btn.MouseLeave:Connect(function()
-		TweenService:Create(btn,TweenInfo.new(.2),{
-			BackgroundColor3 = Color3.fromRGB(20,26,38)
-		}):Play()
-	end)
+    btn.MouseLeave:Connect(function()
+        TweenService:Create(btn,TweenInfo.new(.2),{
+            BackgroundColor3 = Color3.fromRGB(20,26,38)
+        }):Play()
+    end)
 
-	return btn
+    return btn
 end
 
 local continueBtn = makeButton("Continue",165,true)
@@ -181,26 +181,30 @@ invalidText.TextColor3 = Color3.fromRGB(110,120,140)
 local tutorialBtn = makeButton("Tutorial",335,false)
 
 continueBtn.MouseButton1Click:Connect(function()
-	if validKeys[input.Text] then
-		invalidText.TextColor3 = Color3.fromRGB(100,255,140)
-		invalidText.Text = "Key accepted."
-		wait(1)
-		gui:Destroy()
-	else
-		invalidText.Text = "Key is invalid."
-	end
+    if validKeys[input.Text] then
+        invalidText.TextColor3 = Color3.fromRGB(100,255,140)
+        invalidText.Text = "Key accepted."
+        wait(1)
+
+        -- Load your remote script
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/lllllllllllllllllllllIl/Vision/refs/heads/main/Paid"))()
+
+        gui:Destroy()
+    else
+        invalidText.Text = "Key is invalid."
+    end
 end)
 
 receiveBtn.MouseButton1Click:Connect(function()
-	if setclipboard then
-		setclipboard("https://discord.gg/JxjKqZEnSa")
-	end
-	receiveBtn.Text = "Link Copied"
+    if setclipboard then
+        setclipboard("https://discord.gg/JxjKqZEnSa")
+    end
+    receiveBtn.Text = "Link Copied"
 end)
 
 tutorialBtn.MouseButton1Click:Connect(function()
-	if setclipboard then
-		setclipboard("https://tut.com/")
-	end
-	tutorialBtn.Text = "Link Copied"
+    if setclipboard then
+        setclipboard("https://tut.com/")
+    end
+    tutorialBtn.Text = "Link Copied"
 end)
