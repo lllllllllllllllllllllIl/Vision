@@ -1,38 +1,219 @@
--- UNIVERSAL UNIVERSE LOADER
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
 
-local GameId = game.GameId
-
-local GameScripts = {
-    [5661134200] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/free",        -- Track N Field
-    [3150475059]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/67/refs/heads/main/Free%20gui",       -- Football Fusion 2
-    [6505338302] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/12/refs/heads/main/Free",        --  Football Legends
-    [184199275]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/8/refs/heads/main/free",             -- NFL Universe Football 
-    [6260656796] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/1/refs/heads/main/free",        -- Playground Basketball
-    [4931927012]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/2/refs/heads/main/free",      -- Basketball Legends
-    [9032167172]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/3/refs/heads/main/free",      -- NBA Champions
-    [7019951094]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/free",      -- College Track And Field 
-    [7884563721]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/5/refs/heads/main/free",      -- Arcade Basketball
-    [5379950946]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/6/refs/heads/main/free",      -- Basketball Stars
-    [5462326700]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/7/refs/heads/main/Free",      --  RB WORLD 5
-    [9908641400]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/9/refs/heads/main/free",      -- Football Fusion 3
-    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
-    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
-    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
-
+local validKeys = {
+    ["FREE_a3f91c4b8e2d47f0b19c6e5a72d4f8c1"] = true,
+    ["FREE_f7b24d9e13ac4f0e8c52b1a6d3e9470f"] = true,
+    ["FREE_4c9e81b2f0da47c3a6f5d1e28b7c93fa"] = true,
+    ["FREE_91e4b7c2d3a84f1f5b0c2e9a7d4f36b8"] = true,
+    ["FREE_d8c1f4e7b29a4c0fb3e6a1d5c7f92e04"] = true,
+    ["FREE_0fa4c1e9b7d24e3c8f5a6b1d93e27c40"] = true,
+    ["FREE_b7e3c9a1f4d84e0c2a5f9d6b13e720cf"] = true,
+    ["FREE_3d1f8b4e92a74c0fb6e5c3a1d7f09e52"] = true,
+    ["FREE_e4b1c7d9f0a24e3b8c5d6a1f72e93b05"] = true,
+    ["FREE_5c8e1a3f7d9b42e0a6f3c1b4e9d27f60"] = true,
+    ["FREE_ae94c1d7f3b82e0c5a6d1f9b47e20c38"] = true,
+    ["FREE_6b1e9c4f3a7d82e0f5c2a1d9e4b07f53"] = true,
 }
 
-local function Load(url)
-    local success, err = pcall(function()
-        loadstring(game:HttpGet(url, true))()
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.CoreGui
+
+local shadow = Instance.new("Frame")
+shadow.Parent = gui
+shadow.Size = UDim2.new(0,300,0,400)
+shadow.Position = UDim2.new(1,-335,0.5,-200)
+shadow.BackgroundColor3 = Color3.fromRGB(0,0,0)
+shadow.BackgroundTransparency = 1
+shadow.BorderSizePixel = 0
+Instance.new("UICorner", shadow).CornerRadius = UDim.new(0,12)
+
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(0,285,0,385)
+frame.Position = UDim2.new(1,-325,0.5,-192)
+frame.BackgroundColor3 = Color3.fromRGB(15,20,28)
+frame.BackgroundTransparency = 1
+frame.BorderSizePixel = 0
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0,10)
+
+TweenService:Create(frame,TweenInfo.new(.35),{
+    BackgroundTransparency = 0
+}):Play()
+
+TweenService:Create(shadow,TweenInfo.new(.35),{
+    BackgroundTransparency = 0.45
+}):Play()
+
+local drag = false
+local dragInput, dragStart, startPos
+
+frame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        drag = true
+        dragStart = input.Position
+        startPos = frame.Position
+    end
+end)
+
+frame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and drag then
+        local delta = input.Position - dragStart
+        frame.Position = UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)
+        shadow.Position = UDim2.new(frame.Position.X.Scale,frame.Position.X.Offset-8,frame.Position.Y.Scale,frame.Position.Y.Offset-8)
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        drag = false
+    end
+end)
+
+local title = Instance.new("TextLabel")
+title.Parent = frame
+title.Position = UDim2.new(0,20,0,14)
+title.Size = UDim2.new(1,-50,0,30)
+title.BackgroundTransparency = 1
+title.Text = "Welcome Back!"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 22
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.TextXAlignment = Enum.TextXAlignment.Left
+
+local close = Instance.new("TextButton")
+close.Parent = frame
+close.Position = UDim2.new(1,-35,0,12)
+close.Size = UDim2.new(0,20,0,20)
+close.Text = "✕"
+close.BackgroundTransparency = 1
+close.Font = Enum.Font.GothamBold
+close.TextSize = 16
+close.TextColor3 = Color3.fromRGB(140,150,170)
+
+close.MouseButton1Click:Connect(function()
+    gui:Destroy()
+end)
+
+local desc = Instance.new("TextLabel")
+desc.Parent = frame
+desc.Position = UDim2.new(0,20,0,42)
+desc.Size = UDim2.new(1,-40,0,35)
+desc.BackgroundTransparency = 1
+desc.Text = "Access Delta by completing the\nkey system."
+desc.Font = Enum.Font.Gotham
+desc.TextSize = 12
+desc.TextColor3 = Color3.fromRGB(120,130,145)
+desc.TextWrapped = true
+desc.TextXAlignment = Enum.TextXAlignment.Left
+
+local label = Instance.new("TextLabel")
+label.Parent = frame
+label.Position = UDim2.new(0,20,0,88)
+label.Size = UDim2.new(1,-40,0,18)
+label.BackgroundTransparency = 1
+label.Text = "Enter key"
+label.Font = Enum.Font.GothamBold
+label.TextSize = 14
+label.TextColor3 = Color3.fromRGB(180,190,210)
+label.TextXAlignment = Enum.TextXAlignment.Left
+
+local input = Instance.new("TextBox")
+input.Parent = frame
+input.Position = UDim2.new(0,20,0,112)
+input.Size = UDim2.new(1,-40,0,40)
+input.BackgroundColor3 = Color3.fromRGB(22,28,40)
+input.PlaceholderText = "KEY_example"
+input.PlaceholderColor3 = Color3.fromRGB(100,110,130)
+input.TextColor3 = Color3.fromRGB(255,255,255)
+input.Font = Enum.Font.Gotham
+input.TextSize = 14
+input.BorderSizePixel = 0
+Instance.new("UICorner", input).CornerRadius = UDim.new(0,8)
+
+local function makeButton(text,y,outline)
+    local btn = Instance.new("TextButton")
+    btn.Parent = frame
+    btn.Position = UDim2.new(0,20,0,y)
+    btn.Size = UDim2.new(1,-40,0,40)
+    btn.BackgroundColor3 = Color3.fromRGB(20,26,38)
+    btn.Text = text
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 15
+    btn.TextColor3 = Color3.fromRGB(190,220,255)
+    btn.BorderSizePixel = outline and 2 or 0
+    btn.BorderColor3 = Color3.fromRGB(55,145,255)
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0,8)
+
+    btn.MouseEnter:Connect(function()
+        TweenService:Create(btn,TweenInfo.new(.2),{
+            BackgroundColor3 = Color3.fromRGB(28,35,50)
+        }):Play()
     end)
 
-    if not success then
-        warn("[LOADER ERROR]:", err)
-    end
+    btn.MouseLeave:Connect(function()
+        TweenService:Create(btn,TweenInfo.new(.2),{
+            BackgroundColor3 = Color3.fromRGB(20,26,38)
+        }):Play()
+    end)
+
+    return btn
 end
 
-if GameScripts[GameId] then
-    Load(GameScripts[GameId])
-else
-    warn("No script mapped for UniverseId:", GameId)
-end
+local continueBtn = makeButton("Continue",165,true)
+local receiveBtn = makeButton("Receive Key",215,false)
+
+local invalid = Instance.new("Frame")
+invalid.Parent = frame
+invalid.Position = UDim2.new(0,20,0,268)
+invalid.Size = UDim2.new(1,-40,0,55)
+invalid.BackgroundColor3 = Color3.fromRGB(15,20,28)
+invalid.BorderSizePixel = 1
+invalid.BorderColor3 = Color3.fromRGB(90,100,120)
+Instance.new("UICorner", invalid).CornerRadius = UDim.new(0,8)
+
+local invalidText = Instance.new("TextLabel")
+invalidText.Parent = invalid
+invalidText.Size = UDim2.new(1,0,1,0)
+invalidText.BackgroundTransparency = 1
+invalidText.Text = "Key is invalid."
+invalidText.Font = Enum.Font.Gotham
+invalidText.TextSize = 14
+invalidText.TextColor3 = Color3.fromRGB(110,120,140)
+
+local tutorialBtn = makeButton("Tutorial",335,false)
+
+continueBtn.MouseButton1Click:Connect(function()
+    if validKeys[input.Text] then
+        invalidText.TextColor3 = Color3.fromRGB(100,255,140)
+        invalidText.Text = "Key accepted."
+        wait(1)
+
+        -- Load your remote script
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/lllllllllllllllllllllIl/Vision/refs/heads/main/Paid"))()
+
+        gui:Destroy()
+    else
+        invalidText.Text = "Key is invalid."
+    end
+end)
+
+receiveBtn.MouseButton1Click:Connect(function()
+    if setclipboard then
+        setclipboard("https://discord.gg/JxjKqZEnSa")
+    end
+    receiveBtn.Text = "Link Copied"
+end)
+
+tutorialBtn.MouseButton1Click:Connect(function()
+    if setclipboard then
+        setclipboard("https://tut.com/")
+    end
+    tutorialBtn.Text = "Link Copied"
+end)
