@@ -15,7 +15,7 @@ local GameScripts = {
     [5379950946]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/6/refs/heads/main/paid",      -- Basketball Stars 3
     [5462326700]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/7/refs/heads/main/Paid",      --  RB WORLD 5
     [9908641400]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/9/refs/heads/main/paid",      -- Football Fusion 3
-    [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
+    [9201754887]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/10/refs/heads/main/free%20and%20paid",      -- Xtreme Basketball
     [4]  = "https://raw.githubusercontent.com/USER/REPO/main/hoops.lua",      --
 
 }
