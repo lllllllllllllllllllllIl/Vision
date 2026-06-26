@@ -17,6 +17,20 @@ local GameScripts = {
     [9908641400]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/9/refs/heads/main/paid",      -- Football Fusion 3
     [9201754887]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/10/refs/heads/main/free%20and%20paid",      -- Xtreme Basketball
     [4810910714]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/11/refs/heads/main/freeandpaid",      -- HighSchool HOOps
+    [10093228847] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/13/refs/heads/main/freenpaid",        -- Streetball lEgcay
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/67/refs/heads/main/paid%20gui",       -- Football Fusion 2
+    [1] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/12/refs/heads/main/Paid",        --       Football Legends 
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/8/refs/heads/main/paid",        -- NFL Universe Football 
+    [1] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/1/refs/heads/main/paid",        -- Playground Basketball
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/2/refs/heads/main/paid", -- Basketball Legends
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/3/refs/heads/main/paid",      -- NBA Champions
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/paid",      -- College Track And Field
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/5/refs/heads/main/paid",      -- Aracade Basketball
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/6/refs/heads/main/paid",      -- Basketball Stars 3
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/7/refs/heads/main/Paid",      --  RB WORLD 5
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/9/refs/heads/main/paid",      -- Football Fusion 3
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/10/refs/heads/main/free%20and%20paid",      -- Xtreme Basketball
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/11/refs/heads/main/freeandpaid",      -- HighSchool HOOps
 
 }
 
