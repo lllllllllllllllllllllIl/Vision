@@ -1,0 +1,51 @@
+- UNIVERSAL UNIVERSE LOADER
+
+local GameId = game.GameId
+
+local GameScripts = {
+    [5661134200] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/paid",        -- Track N Field
+    [3150475059]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/67/refs/heads/main/paid%20gui",       -- Football Fusion 2
+    [6505338302] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/12/refs/heads/main/Paid",        --       Football Legends 
+    [184199275]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/8/refs/heads/main/paid",        -- NFL Universe Football 
+    [6260656796] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/1/refs/heads/main/paid",        -- Playground Basketball
+    [4931927012]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/2/refs/heads/main/paid", -- Basketball Legends
+    [9032167172]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/3/refs/heads/main/paid",      -- NBA Champions
+    [7019951094]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/paid",      -- College Track And Field
+    [7884563721]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/5/refs/heads/main/paid",      -- Aracade Basketball
+    [5379950946]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/6/refs/heads/main/paid",      -- Basketball Stars 3
+    [5462326700]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/14/refs/heads/main/gui",      --  RB WORLD 5
+    [9908641400]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/9/refs/heads/main/paid",      -- Football Fusion 3
+    [9201754887]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/10/refs/heads/main/free%20and%20paid",      -- Xtreme Basketball
+    [4810910714]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/11/refs/heads/main/freeandpaid",      -- HighSchool HOOps
+    [10093228847] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/13/refs/heads/main/freenpaid",        -- Streetball lEgcay
+    [5370286620]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/15/refs/heads/main/gui",       -- Hoop Nation 2
+    [7080485734] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/16/refs/heads/main/gui",        --       Elite Basketball
+    [2931782391]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/hp-life/refs/heads/main/gui",        -- Hoops Life
+    [1] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/1/refs/heads/main/paid",        -- Playground Basketball
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/2/refs/heads/main/paid", -- Basketball Legends
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/3/refs/heads/main/paid",      -- NBA Champions
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/paid",      -- College Track And Field
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/5/refs/heads/main/paid",      -- Aracade Basketball
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/6/refs/heads/main/paid",      -- Basketball Stars 3
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/7/refs/heads/main/Paid",      --  RB WORLD 5
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/9/refs/heads/main/paid",      -- Football Fusion 3
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/10/refs/heads/main/free%20and%20paid",      -- Xtreme Basketball
+    [1]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/11/refs/heads/main/freeandpaid",      -- HighSchool HOOps
+
+}
+
+local function Load(url)
+    local success, err = pcall(function()
+        loadstring(game:HttpGet(url, true))()
+    end)
+
+    if not success then
+        warn("[LOADER ERROR]:", err)
+    end
+end
+
+if GameScripts[GameId] then
+    Load(GameScripts[GameId])
+else
+    warn("No script mapped for UniverseId:", GameId)
+end
