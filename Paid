@@ -4,7 +4,7 @@
 local Sound = Instance.new("Sound")
 Sound.SoundId = "rbxassetid://6530245385"
 Sound.Volume = 1
-Sound.Looped = false
+Sound.Looped = true
 Sound.Parent = game:GetService("SoundService")
 Sound:Play()
 
