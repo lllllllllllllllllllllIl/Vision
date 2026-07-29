@@ -1,6 +1,34 @@
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
+--// 24-HOUR KEY MEMORY SYSTEM
+local KEY_SAVE_FILE = "vision_key_time.txt"
+local KEY_VALID_DURATION = 24 * 60 * 60 -- 24 hours
+
+local function hasValidKey()
+    if not isfile or not readfile then
+        return false
+    end
+
+    if not isfile(KEY_SAVE_FILE) then
+        return false
+    end
+
+    local saved = tonumber(readfile(KEY_SAVE_FILE))
+    if not saved then
+        return false
+    end
+
+    return (os.time() - saved) < KEY_VALID_DURATION
+end
+
+local function saveKeyTime()
+    if writefile then
+        writefile(KEY_SAVE_FILE, tostring(os.time()))
+    end
+end
+
+--// VALID KEYS
 local validKeys = {
     ["FREE_a3f91c4b8e2d47f0b19c6e5a72d4f8c1"] = true,
     ["FREE_f7b24d9e13ac4f0e8c52b1a6d3e9470f"] = true,
@@ -52,6 +80,13 @@ local validKeys = {
     ["FREE_d0b4e9c7f0a23e8c5d6a1f7b92e40c35"] = true,
 }
 
+--// AUTO-SKIP GUI IF KEY IS STILL VALID
+if hasValidKey() then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/lllllllllllllllllllllIl/Vision/refs/heads/main/Paid"))()
+    return
+end
+
+--// GUI CREATION
 local gui = Instance.new("ScreenGui")
 gui.Parent = game.CoreGui
 
@@ -229,9 +264,12 @@ continueBtn.MouseButton1Click:Connect(function()
     if validKeys[input.Text] then
         invalidText.TextColor3 = Color3.fromRGB(100,255,140)
         invalidText.Text = "Key accepted."
+
+        -- Save time of key entry
+        saveKeyTime()
+
         wait(1)
 
-        -- Load your remote script
         loadstring(game:HttpGet("https://raw.githubusercontent.com/lllllllllllllllllllllIl/Vision/refs/heads/main/Paid"))()
 
         gui:Destroy()
