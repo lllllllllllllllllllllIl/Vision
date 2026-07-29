@@ -100,7 +100,7 @@ task.delay(10, function()
 end)
 
 --// AFTER 60 SECONDS → STOP AUDIO
-task.delay(60, function()
+task.delay(10, function()
     Sound:Stop()
     print("Vision Hub Music Stopped by kosta")
 end)
