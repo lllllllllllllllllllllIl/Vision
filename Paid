@@ -45,7 +45,7 @@ FillCorner.CornerRadius = UDim.new(0, 20)
 -- Smooth Tween Fill Over 10 Seconds
 local TweenService = game:GetService("TweenService")
 local TweenInfoFill = TweenInfo.new(
-    10,                 -- 10 seconds
+    5,                 -- 5 seconds
     Enum.EasingStyle.Sine,
     Enum.EasingDirection.Out
 )
@@ -53,7 +53,7 @@ local TweenInfoFill = TweenInfo.new(
 TweenService:Create(BarFill, TweenInfoFill, {Size = UDim2.new(1, 0, 1, 0)}):Play()
 
 --// AFTER 10 SECONDS → RUN LOADER
-task.delay(10, function()
+task.delay(5, function()
     print("Vision Hub Loaded")
 
     ScreenGui:Destroy()
@@ -100,7 +100,7 @@ task.delay(10, function()
 end)
 
 --// AFTER 60 SECONDS → STOP AUDIO
-task.delay(10, function()
+task.delay(5, function()
     Sound:Stop()
     print("Vision Hub Music Stopped by kosta")
 end)
