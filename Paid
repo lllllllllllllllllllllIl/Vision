@@ -80,7 +80,7 @@ task.delay(5, function()
         [7080485734] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/16/refs/heads/main/gui",
         [2931782391] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/hp-life/refs/heads/main/gui",
         [7529591378] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/17/refs/heads/main/paid", - Practical Basketball
-        [7529591378] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/18/refs/heads/main/gui", - Elite Hoops
+        [9737233862] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/18/refs/heads/main/gui", - Elite Hoops
     }
 
     local function Load(url)
