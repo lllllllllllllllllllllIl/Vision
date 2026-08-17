@@ -1,0 +1,107 @@
+-- UNIVERSAL LOADER + AUDIO + 10s SMOOTH BLUE PROGRESS BAR
+
+--// AUDIO SETUP
+local Sound = Instance.new("Sound")
+Sound.SoundId = "rbxassetid://6530245385"
+Sound.Volume = 1
+Sound.Looped = true
+Sound.Parent = game:GetService("SoundService")
+Sound:Play()
+
+--// PROGRESS BAR GUI (10 seconds)
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+
+-- Loading Logo
+local Logo = Instance.new("ImageLabel", ScreenGui)
+Logo.Size = UDim2.new(0, 150, 0, 150)
+Logo.Position = UDim2.new(0.5, -75, 0.35, 0)
+Logo.BackgroundTransparency = 1
+Logo.Image = "rbxassetid://130987286" -- You can replace with your uploaded version
+
+-- Bar Background
+local BarFrame = Instance.new("Frame", ScreenGui)
+BarFrame.Size = UDim2.new(0.4, 0, 0.04, 0)
+BarFrame.Position = UDim2.new(0.3, 0, 0.75, 0)
+BarFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+BarFrame.BorderSizePixel = 0
+BarFrame.BackgroundTransparency = 0.2
+BarFrame.ClipsDescendants = true
+BarFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+BarFrame.Position = UDim2.new(0.5, 0, 0.75, 0)
+BarFrame:SetAttribute("Corner", true)
+
+local Corner = Instance.new("UICorner", BarFrame)
+Corner.CornerRadius = UDim.new(0, 20)
+
+-- Bar Fill (Light Blue)
+local BarFill = Instance.new("Frame", BarFrame)
+BarFill.Size = UDim2.new(0, 0, 1, 0)
+BarFill.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+BarFill.BorderSizePixel = 0
+
+local FillCorner = Instance.new("UICorner", BarFill)
+FillCorner.CornerRadius = UDim.new(0, 20)
+
+-- Smooth Tween Fill Over 10 Seconds
+local TweenService = game:GetService("TweenService")
+local TweenInfoFill = TweenInfo.new(
+    5,                 -- 5 seconds
+    Enum.EasingStyle.Sine,
+    Enum.EasingDirection.Out
+)
+
+TweenService:Create(BarFill, TweenInfoFill, {Size = UDim2.new(1, 0, 1, 0)}):Play()
+
+--// AFTER 10 SECONDS → RUN LOADER
+task.delay(5, function()
+    print("Vision Hub Loaded")
+
+    ScreenGui:Destroy()
+
+    local GameId = game.GameId
+
+    local GameScripts = {
+        [5661134200] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/paid",
+        [3150475059] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/67/refs/heads/main/paid%20gui",
+        [6505338302] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/12/refs/heads/main/Paid",
+        [184199275]  = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/8/refs/heads/main/paid",
+        [6260656796] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/1/refs/heads/main/paid",
+        [4931927012] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/2/refs/heads/main/paid",
+        [9032167172] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/3/refs/heads/main/paid",
+        [7019951094] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/4/refs/heads/main/paid",
+        [7884563721] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/5/refs/heads/main/paid",
+        [5379950946] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/6/refs/heads/main/paid",
+        [5462326700] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/14/refs/heads/main/gui",
+        [9908641400] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/9/refs/heads/main/paid",
+        [9201754887] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/10/refs/heads/main/free%20and%20paid",
+        [4810910714] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/11/refs/heads/main/freeandpaid",
+        [10093228847] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/13/refs/heads/main/freenpaid",
+        [5370286620] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/15/refs/heads/main/gui",
+        [7080485734] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/16/refs/heads/main/gui",
+        [2931782391] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/hp-life/refs/heads/main/gui",
+        [7529591378] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/17/refs/heads/main/paid", -- Practical Basketball
+        [9737233862] = "https://raw.githubusercontent.com/lllllllllllllllllllllIl/18/refs/heads/main/gui", -- Elite Hoops
+    }
+
+    local function Load(url)
+        local success, err = pcall(function()
+            loadstring(game:HttpGet(url, true))()
+        end)
+
+        if not success then
+            warn("[LOADER ERROR]:", err)
+        end
+    end
+
+    if GameScripts[GameId] then
+        Load(GameScripts[GameId])
+    else
+        warn("No script mapped for UniverseId:", GameId)
+    end
+end)
+
+--// AFTER 60 SECONDS → STOP AUDIO
+task.delay(5, function()
+    Sound:Stop()
+    print("Vision Hub Music Stopped by kosta")
+end)
